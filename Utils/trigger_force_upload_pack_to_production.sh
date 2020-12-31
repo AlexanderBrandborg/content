@@ -12,7 +12,7 @@ trigger_build_url="https://circleci.com/api/v2/project/github/demisto/content/pi
 
 post_data=$(cat <<-EOF
 {
-  "branch": "master",
+  "branch": "upload_private_packs_slack_notifier",
   "parameters": {
     "force_pack_upload": "true",
     "packs_to_upload": "${_packs}"
