@@ -44,6 +44,9 @@ DOCKER_HARDENING_CONFIGURATION = {
     'limit.docker.cpu': 'true',
     'python.pass.extra.keys': '--memory=1g##--memory-swap=-1##--pids-limit=256##--ulimit=nofile=1024:8192'
 }
+DOCKER_HARDENING_CONFIGURATION_FOR_PODMAN = {
+    'docker.run.internal.asuser': 'true'
+}
 MARKET_PLACE_CONFIGURATION = {
     'content.pack.verify': 'false',
     'marketplace.initial.sync.delay': '0',
@@ -893,7 +896,7 @@ def get_json_file(path):
 
 def configure_servers_and_restart(build):
     if LooseVersion(build.server_numeric_version) >= LooseVersion('5.5.0'):
-        configurations = DOCKER_HARDENING_CONFIGURATION
+        configurations = DOCKER_HARDENING_CONFIGURATION_FOR_PODMAN
         configure_types = ['docker hardening']
         if LooseVersion(build.server_numeric_version) >= LooseVersion('6.0.0'):
             configure_types.append('marketplace')
